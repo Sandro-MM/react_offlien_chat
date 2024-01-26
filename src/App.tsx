@@ -53,7 +53,6 @@ export function App() {
     };
   }, [dispatch, user.id]);
 
-
   return (
       <div className="App">
         <Header />
