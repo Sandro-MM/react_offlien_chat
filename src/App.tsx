@@ -8,7 +8,7 @@ import { v4 as uid } from "uuid";
 import {addUser, markUserOffline, updateUserAvatar} from "./store/usersSlice";
 import {User} from "./interfaces";
 import {UserList} from "./components/UserList";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {BrowserRouter, Routes, Route, HashRouter} from 'react-router-dom';
 import ChatCard from "./components/ChatCard";
 
 export function App() {
@@ -59,7 +59,7 @@ export function App() {
         <Header />
         <div className="container">
           {isLoggedIn ? (
-              <BrowserRouter basename="/react_offline_chat">
+              <HashRouter basename="/react_offline_chat">
                 <Routes>
                   <Route path="/" element={<UserList currentUser={user} />} />
                   <Route
@@ -67,7 +67,7 @@ export function App() {
                       element={<ChatCard />}
                   />
                 </Routes>
-              </BrowserRouter>
+              </HashRouter>
           ) : (
               <UserLogin handleLogin={handleLogin} />
           )}
