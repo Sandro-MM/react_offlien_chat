@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-
 import Header from "./components/Header";
 import { UserLogin } from "./components/UserLogin";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
@@ -8,7 +7,7 @@ import { v4 as uid } from "uuid";
 import {addUser, markUserOffline, updateUserAvatar} from "./store/usersSlice";
 import {User} from "./interfaces";
 import {UserList} from "./components/UserList";
-import {BrowserRouter, Routes, Route, HashRouter} from 'react-router-dom';
+import { Routes, Route,} from 'react-router-dom';
 import ChatCard from "./components/ChatCard";
 
 export function App() {
@@ -58,7 +57,6 @@ export function App() {
         <Header />
         <div className="container">
           {isLoggedIn ? (
-              <HashRouter basename="/react_offline_chat">
                 <Routes>
                   <Route path="/" element={<UserList currentUser={user} />} />
                   <Route
@@ -66,7 +64,6 @@ export function App() {
                       element={<ChatCard />}
                   />
                 </Routes>
-              </HashRouter>
           ) : (
               <UserLogin handleLogin={handleLogin} />
           )}
